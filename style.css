@@ -67,14 +67,17 @@ section .infos{
 }
 .cell{
     border: 1px solid #333;
+    border-radius: 50%;
 }
 
 .snake{
     background-color: var(--bg-secondary-color);
+    border-radius: 50%;
 }
 
 .food{
     background-color: #00f000;
+    border-radius: 50%;
 }
 .speed div{
     display: inline-block;
@@ -91,4 +94,9 @@ section .infos{
 }
 .displayNone{
     display: none;
+}
+
+.head{
+    background-color: #f00;
+    border-radius: 50%;
 }

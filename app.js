@@ -1,12 +1,5 @@
 let map = {
-    "500":1,
-    "450":2,
-    "400":3,
-    "350":4,
-    "300":5,
-    "250":6,
-    "200":7,
-    "150":8
+    "500":1, "450":2,"400":3,"350":4,"300":5,"250":6,"200":7,"150":8
 };
 let score = 0, time = 300 , speed = 0, HighSocre = 0;
 let highScore = document.querySelector("#high-score");
@@ -115,7 +108,9 @@ function starts(time, speed, score){
             let tail = snake.pop();
             blocks[`${tail.x}-${tail.y}`].classList.remove("snake");
         }
-        blocks[`${head.x}-${head.y}`].classList.add("snake");
+        blocks[`${snake[0].x}-${snake[0].y}`].classList.remove("head");
+        blocks[`${snake[0].x}-${snake[0].y}`].classList.remove("snake");
+        blocks[`${head.x}-${head.y}`].classList.add("head");
         snake.unshift(head);
         render();
     }, time);
@@ -130,16 +125,17 @@ function again(){
     Score.classList.toggle("displayNone");
     score = 0;
     sc.innerText = `${score}`;
-    starts(time, speed, score);
+       direction = "down";
     distroySnake(snake);
     snake = [{x:1, y:3}, {x:1, y:4}, {x:1, y:5}];
     render();
     feedFood();
+    starts(time, speed, score);
 }
-
 function distroySnake(snake){
     while(snake.length>0){
         let tail = snake.pop();
+        blocks[`${tail.x}-${tail.y}`].classList.remove("head");
         blocks[`${tail.x}-${tail.y}`].classList.remove("snake");
     }
     blocks[`${food.x}-${food.y}`].classList.remove("food");
